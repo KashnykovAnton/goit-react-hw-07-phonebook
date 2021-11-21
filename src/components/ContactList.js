@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   getContacts,
   getFilter,
@@ -12,10 +12,11 @@ export default function ContactList() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const loader = useSelector(getLoader);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    return fetchContact();
-  }, []);
+    return dispatch(fetchContact());
+  }, [dispatch]);
 
   const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
