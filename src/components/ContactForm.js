@@ -19,8 +19,8 @@ function ContactForm({ fetchContact }) {
   const [number, setNumber] = useState('');
 
   useEffect(() => {
-    return fetchContact();
-  }, [fetchContact]);
+    return dispatch(fetchContact());
+  }, [dispatch, fetchContact]);
 
   const handleChange = e => {
     const { name, value } = e.target;
